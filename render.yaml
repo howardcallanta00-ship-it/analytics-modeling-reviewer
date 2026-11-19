@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: analytics-modeling-reviewer
+    runtime: static
+    buildCommand: echo "No build step needed"
+    staticPublishPath: .
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: public, max-age=300

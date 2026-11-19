@@ -3,7 +3,7 @@
   blurb: 'KNN, Decision Tree and LDA for vendor contracts; confusion matrix, F1, AUC.',
   steps: [1, 2, 3, 4, 5, 6, 7],
   pipelineNote: 'Full pipeline with a 70/15/15 stratified split. The new pieces are at Step 6: class-level metrics (precision, recall, F1), ROC-AUC, and business thresholds on predicted probabilities.',
-  thirty: 'Classification predicts a category: here, whether to <span style="color:var(--orange-hi)">Renew</span>, <span style="color:var(--orange-hi)">Negotiate</span> or <span style="color:var(--orange-hi)">Terminate</span> a vendor contract. Judge it class by class, because missing a Terminate is far costlier than missing a Renew.',
+  thirty: 'Classification predicts a category: here, whether to <mark>Renew</mark>, <mark>Negotiate</mark> or <mark>Terminate</mark> a vendor contract. Judge it class by class, because missing a Terminate is far costlier than missing a Renew.',
   analogy: 'A smoke alarm: overall accuracy can look great because most days there is no fire. What matters is whether it catches the fires (recall) without crying wolf too often (precision).',
   objectives: ['Explain multi-class classification for a business decision.', 'Prepare data, standardize correctly and control leakage.', 'Classify by hand with KNN votes, a tree path and LDA scores.', 'Compute accuracy, precision, recall and F1 from a confusion matrix.', 'Interpret ROC-AUC, thresholds and macro averages.', 'Recommend a model using metrics and business cost.'],
   lessons: [

@@ -3,7 +3,7 @@
   blurb: 'KNN Regressor, Decision Tree Regressor and SVR for retail demand.',
   steps: [1, 2, 3, 4, 5, 6, 7],
   pipelineNote: 'Full pipeline with a 60/20/20 split: train fits the models, validation tunes k, tree depth and SVR settings, and test is touched once for the final error.',
-  thirty: 'Three ways to predict a number: <span style="color:var(--orange-hi)">KNN</span> averages the most similar past days, a <span style="color:var(--orange-hi)">decision tree</span> follows if-then splits to a leaf average, and <span style="color:var(--orange-hi)">SVR</span> fits a smooth curve that ignores small errors inside a margin.',
+  thirty: 'Three ways to predict a number: <mark>KNN</mark> averages the most similar past days, a <mark>decision tree</mark> follows if-then splits to a leaf average, and <mark>SVR</mark> fits a smooth curve that ignores small errors inside a margin.',
   analogy: 'Forecasting tomorrow’s drink sales: KNN asks "what happened on days like this?", a tree asks "is there a promo? is traffic high?", and SVR draws the best smooth trend with some wiggle room.',
   objectives: ['Explain how KNN, Decision Tree and SVR predict a continuous value.', 'Prepare data: target, inputs available in time, encoding and scaling per model.', 'Compute a KNN prediction and follow a tree path by hand.', 'Explain epsilon, C, kernel and gamma in SVR.', 'Compare models with MAE, RMSE and R² on validation data and pick one for the business.', 'Recognize overfitting, leakage and model limitations.'],
   lessons: [

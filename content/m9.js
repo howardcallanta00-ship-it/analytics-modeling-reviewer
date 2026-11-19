@@ -3,7 +3,7 @@
   blurb: 'Preprocessing, BoW, TF-IDF, embeddings, BERT tokens and fine-tuning.',
   steps: [1, 2, 3, 4, 5, 6, 7],
   pipelineNote: 'Same pipeline with text: Step 2 is the preprocessing pipeline, features come from BoW, TF-IDF or BERT, the split is stratified (and made before fitting any vectorizer), and Step 6 adds error analysis on real misclassified reviews.',
-  thirty: 'Text analytics turns customer comments into numbers a model can use. Classic pipelines clean, tokenize and count words (BoW, TF-IDF); <span style="color:var(--orange-hi)">BERT</span> keeps word order and reads each word in context, then is fine-tuned to sort reviews into issue classes.',
+  thirty: 'Text analytics turns customer comments into numbers a model can use. Classic pipelines clean, tokenize and count words (BoW, TF-IDF); <mark>BERT</mark> keeps word order and reads each word in context, then is fine-tuned to sort reviews into issue classes.',
   analogy: 'A classic pipeline is like a word-count spreadsheet: it knows which words appear, not what they mean together. BERT is like a reader who has read millions of pages and knows "damaged" means something different next to "box" than next to "reputation".',
   objectives: ['Explain how text analytics converts reviews into usable data.', 'Apply lowercasing, noise removal, tokenization, stopwords, normalization, stemming, lemmatization and POS tagging.', 'Represent text with BoW, TF-IDF and word embeddings.', 'Explain BERT: bidirectional context, WordPiece, [CLS]/[SEP], attention mask, fine-tuning.', 'Assess a text classifier with class metrics, a confusion matrix and error analysis.', 'Report results with limits, privacy and fairness in mind.'],
   lessons: [

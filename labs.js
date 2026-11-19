@@ -6,15 +6,17 @@
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const $ = (root, sel) => root.querySelector(sel);
   const $$ = (root, sel) => Array.from(root.querySelectorAll(sel));
+  const TARGET = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg>';
+  const TICK = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>';
   function head(title, desc, challenge, done) {
-    return '<div class="stack" style="gap:6px"><span class="eyebrow">Interactive lab</span><h1 style="font-size:clamp(1.7rem,3.4vw,2.3rem)">' + title + '</h1><p class="muted" style="max-width:76ch">' + desc + '</p></div>' +
-      '<div class="card row" data-challenge style="gap:14px;flex-wrap:nowrap;background:' + (done ? 'var(--green-soft)' : 'var(--orange-soft)') + ';border-color:' + (done ? 'var(--green-line)' : 'var(--orange-line)') + '"><span style="width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex-shrink:0;background:' + (done ? 'var(--green)' : 'var(--orange)') + ';color:#fff"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true">' + (done ? '<path d="M5 12l5 5 9-10"/>' : '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/>') + '</svg></span><div><b>' + (done ? 'Challenge cleared' : 'Challenge · +20 XP') + '</b><div style="font-size:.92rem;color:var(--ink-2)">' + challenge + '</div></div></div>';
+    return '<div class="stack" style="gap:8px"><h2 style="font-size:clamp(1.6rem,3.2vw,2.2rem);font-stretch:116%">' + title + '</h2><p class="muted" style="max-width:72ch;font-size:1.05rem">' + desc + '</p></div>' +
+      '<div class="challenge' + (done ? ' done' : '') + '" data-challenge><span class="ic">' + (done ? TICK : TARGET) + '</span><div><b>' + (done ? 'Challenge cleared' : 'Your challenge, worth 20 XP') + '</b><div style="font-size:.95rem;color:var(--ink-2)">' + challenge + '</div></div></div>';
   }
   function cleared(root, api) {
     if (api.isDone()) return;
     api.done();
     const c = $(root, '[data-challenge]');
-    if (c) { c.style.background = 'var(--green-soft)'; c.style.borderColor = 'var(--green-line)'; c.querySelector('b').textContent = 'Challenge cleared · +20 XP'; const ic = c.querySelector('span'); ic.style.background = 'var(--green)'; ic.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>'; }
+    if (c) { c.classList.add('done'); c.querySelector('b').textContent = 'Challenge cleared. +20 XP'; c.querySelector('.ic').innerHTML = TICK; }
   }
   const kpi = (label, val, hot) => '<div class="kpi' + (hot ? ' hot' : '') + '"><small>' + label + '</small><b class="num">' + val + '</b></div>';
 
@@ -282,7 +284,7 @@
   /* ================= M6 · K-means stepper ================= */
   L.m6 = function (root, api) {
     const P = [[1.4, 1.3, 'A'], [1.1, 1.5, 'B'], [-1.2, -1.0, 'C'], [-1.5, -1.3, 'D'], [0.2, 0.1, 'E'], [-0.1, 0.3, 'F'], [1.6, 1.1, 'G'], [1.2, 1.8, 'H'], [-1.0, -1.5, 'I'], [-1.7, -0.9, 'J'], [0.4, 0.5, 'K'], [0.0, -0.2, 'L']];
-    const COL = ['var(--indigo)', 'var(--orange)', 'var(--green)', 'var(--red)'];
+    const COL = ['var(--indigo)', 'var(--orange)', 'var(--green)', 'var(--violet)'];
     let K = 3, cent, asg, iter, phase, conv;
     root.innerHTML = head('K-Means Stepper', 'Twelve customers on standardized spend and frequency (A–F are the slides’ six). Step through the algorithm yourself: assign each customer to the nearest centroid, then move each centroid to its cluster’s mean.', 'Run K = 3 to convergence and reach a <b>silhouette score above 0.5</b>.', api.isDone()) +
       '<div class="labgrid"><section class="card stack"><div class="row between"><div class="seg" role="group" aria-label="Number of clusters">' + [2, 3, 4].map((k) => '<button data-k="' + k + '" class="' + (k === 3 ? 'on' : '') + '">K = ' + k + '</button>').join('') + '</div><span class="chip indigo" id="m6ph"></span></div><div id="m6c"></div>' +

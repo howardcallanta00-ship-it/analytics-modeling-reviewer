@@ -3,7 +3,7 @@
   blurb: 'Support, confidence, lift, Apriori and FP-Growth on shopping baskets.',
   steps: [1, 2, 3, 5, 6, 7],
   pipelineNote: 'The pipeline again, adapted: the "model" is a set of mined rules, Step 6 (Assess) uses support, confidence and lift, and validation is time-based: mine on earlier months, check the rules still hold later.',
-  thirty: 'Association rules find items people buy together. <span style="color:var(--orange-hi)">Support</span> asks how often, <span style="color:var(--orange-hi)">confidence</span> asks how reliably, and <span style="color:var(--orange-hi)">lift</span> asks whether it beats pure chance.',
+  thirty: 'Association rules find items people buy together. <mark>Support</mark> asks how often, <mark>confidence</mark> asks how reliably, and <mark>lift</mark> asks whether it beats pure chance.',
   analogy: 'It is the engine behind "customers who bought this also bought…", shelf placement and bundle promos.',
   objectives: ['Explain association rules using supermarket transactions.', 'Prepare and encode transaction data into baskets.', 'Compute support, confidence and lift and interpret them in business terms.', 'Apply Apriori step by step, including pruning.', 'Explain how FP-Growth builds and mines an FP-tree.', 'Set business thresholds, validate rules over time and report them.'],
   lessons: [
